@@ -2,7 +2,7 @@
 
 > IAM / IGA Senior Security Analyst — SailPoint IdentityIQ. Single-file, terminal-themed personal portfolio.
 
-**Live site:** `https://<your-username>.github.io/arjun-portfolio/` *(update once GitHub Pages is enabled)*
+**Live site:** `https://arjunrajeev7.github.io/`
 
 ---
 
