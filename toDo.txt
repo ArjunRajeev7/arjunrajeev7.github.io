@@ -1,3 +1,4 @@
 Recommendations
 Certification / Badges
 Certifications in progress
+add powershell and linux commands keywords
