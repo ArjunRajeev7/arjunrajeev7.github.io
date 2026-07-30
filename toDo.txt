@@ -5,3 +5,4 @@ Certifications in progress
   -IIQ Associate
   -ISC Admin
 add powershell and linux commands keywords
+make the cursors blink in green?
