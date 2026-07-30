@@ -4,7 +4,7 @@
 
 **Live site:** `https://arjunrajeev7.github.io/`
 
-![Social Preview](./social-preview.png)
+![Social Preview](./social-preview.gif)
 
 ---
 
