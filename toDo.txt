@@ -6,3 +6,4 @@ Certifications in progress
   -ISC Admin
 add powershell and linux commands keywords
 make the cursors blink in green?
+intergrate youtube realtime stats on a page?
