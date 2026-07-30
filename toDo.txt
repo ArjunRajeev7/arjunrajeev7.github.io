@@ -1,4 +1,7 @@
-Recommendations
-Certification / Badges
+Recommendations from Linked
+Add Certification / Badges page? section?
 Certifications in progress
+  -SC-300
+  -IIQ Associate
+  -ISC Admin
 add powershell and linux commands keywords
