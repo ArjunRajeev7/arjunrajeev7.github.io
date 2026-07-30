@@ -4,6 +4,8 @@
 
 **Live site:** `https://arjunrajeev7.github.io/`
 
+![Social Preview](./social-preview.png)
+
 ---
 
 ## Overview
@@ -35,7 +37,9 @@ No build step, no dependencies to install. It's one static HTML file.
 ```
 arjun-portfolio/
 ├── index.html      ← everything: markup, <style>, <script>
-└── README.md
+├── README.md
+└── social-preview.png
+
 ```
 
 `index.html` must stay at the **repo root** — GitHub Pages resolves the root `index.html` as the site's home page.
