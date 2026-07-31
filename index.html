@@ -384,6 +384,13 @@
 
   .cert-list{display:grid;gap:12px;}
   .cert-item{
+  display:flex;align-items:center;gap:14px;
+  background:#000;border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;
+  }
+
+  .cert-list{display:grid;gap:12px;}
+  .cert-item{
     display:flex;align-items:center;gap:14px;
     background:#000;border:1px solid var(--line);border-radius:var(--radius);
     padding:14px 16px;
@@ -835,7 +842,7 @@
       </div>
 
       <div class="reveal">
-        <h4 style="font-family:var(--disp);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;">Certifications</h4>
+        <h4 style="font-family:var(--disp);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;">Certifications <a href="certifications.html" style="font-family:var(--disp);font-size:11px;color:var(--muted);text-transform:none;letter-spacing:0;border:1px solid var(--line-bright);padding:3px 9px;border-radius:var(--radius);margin-left:8px;">View badges →</a></h4>
         <div class="cert-list">
           <div class="cert-item">
             <i class="fa-solid fa-certificate"></i>
@@ -875,7 +882,7 @@
           <div class="cert-item pending">
             <i class="fa-solid fa-hourglass-half"></i>
             <div>
-              <div class="cert-name">Microsoft SC-300: Identity and Access Administrator</div>
+              <div class="cert-name">Microsoft Identity &amp; Access Administrator Associate (SC-300)</div>
               <div class="cert-meta">Microsoft</div>
             </div>
             <div class="cert-date">IN_PROGRESS</div>
@@ -891,7 +898,7 @@
           <div class="cert-item pending">
             <i class="fa-solid fa-hourglass-half"></i>
             <div>
-              <div class="cert-name">SailPoint Identity Security Cloud Administrator</div>
+              <div class="cert-name">SailPoint Identity Security Administrator</div>
               <div class="cert-meta">SailPoint</div>
             </div>
             <div class="cert-date">IN_PROGRESS</div>
