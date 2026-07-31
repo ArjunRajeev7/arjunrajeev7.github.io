@@ -9,3 +9,5 @@ Add Certification PDF or Image / Badge Image, better to have this on its own sep
 add powershell and linux commands keywords
 make the cursors blink in green?
 intergrate youtube realtime stats on a page?
+
+Add other certifications like Cyberakr as per drive folder
