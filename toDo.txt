@@ -1,9 +1,11 @@
-Recommendations from Linked
-Add Certification / Badges page? section?
-Certifications in progress
-  -SC-300
-  -IIQ Associate
-  -ISC Admin
+Add the Recommendations I received on Linked into boxes
+Add below Certifications "In Progress" under the Certifications Section
+  -Microsoft SC-300
+  -SailPoint Identity IQ Associate
+  -SailPoint Identity Security Cloud Administrator
+Add Certification PDF or Image / Badge Image, better to have this on its own separate HTML page keeping the same theme and motif so it doesnt clutter the first page I think?
+
+
 add powershell and linux commands keywords
 make the cursors blink in green?
 intergrate youtube realtime stats on a page?
