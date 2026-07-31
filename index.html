@@ -370,7 +370,7 @@
   .pill:hover{background:var(--white);color:#000;}
 
   /* ---------- EDUCATION / ACHIEVEMENTS ---------- */
-  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+   .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
   .edu-card{
     background:#000;color:var(--white);border:1px solid var(--line-bright);border-radius:var(--radius);
     padding:26px;
@@ -380,13 +380,6 @@
   .edu-card .edu-org{color:var(--muted);font-size:13px;margin-bottom:2px;font-family:var(--body);}
   .edu-card .edu-date{
     font-family:var(--disp);font-size:11px;color:var(--dim);
-  }
-
-  .cert-list{display:grid;gap:12px;}
-  .cert-item{
-  display:flex;align-items:center;gap:14px;
-  background:#000;border:1px solid var(--line);border-radius:var(--radius);
-  padding:14px 16px;
   }
 
   .cert-list{display:grid;gap:12px;}
@@ -401,6 +394,25 @@
   .cert-item .cert-date{
     margin-left:auto;font-family:var(--disp);font-size:11px;color:var(--dim);
     white-space:nowrap;
+  }
+  .cert-item.pending{border-style:dashed;}
+  .cert-item.pending i{color:var(--muted);}
+  .cert-item.pending .cert-date{color:var(--dim);font-style:italic;}
+
+  .reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .reco-card{
+    background:#000;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;display:flex;flex-direction:column;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .reco-card:hover{border-color:var(--white);transform:translateY(-3px);}
+  .reco-quote-icon{color:var(--line-bright);font-size:20px;margin-bottom:12px;}
+  .reco-text{font-size:13.5px;color:var(--muted);font-family:var(--body);flex-grow:1;font-style:italic;line-height:1.65;}
+  .reco-foot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .reco-name{font-family:var(--disp);font-size:13.5px;font-weight:700;color:var(--fg);}
+  .reco-role{font-family:var(--body);font-size:11.5px;color:var(--dim);margin-top:2px;}
+  @media (max-width:860px){
+    .reco-grid{grid-template-columns:1fr;}
   }
 
   .awards-row{display:grid;gap:12px;margin-top:14px;}
@@ -425,7 +437,6 @@
   }
   .contact h2{color:var(--white);font-size:clamp(24px,3.2vw,32px);text-transform:uppercase;}
   .contact p{color:var(--muted);margin-top:10px;font-size:14px;font-family:var(--body);}
-
   .contact-actions{
   display:grid;
   grid-template-columns:repeat(4, auto);
@@ -938,11 +949,8 @@
       <div class="reco-card">
         <i class="fa-solid fa-quote-left reco-quote-icon"></i>
         <div class="reco-text">I have had the pleasure of working closely with Arjun on IAM and SailPoint initiatives, and he has consistently proven himself to be a highly dependable, proactive, and solution-oriented professional.
-
 Arjun is truly a go-to person within the team, someone who takes complete ownership of his responsibilities and can always be relied upon during critical situations. He approaches every task with professionalism, accountability, and a positive attitude, making him extremely easy to work with.
-
 What stands out most about Arjun is his innovative mindset and ability to simplify processes by finding smarter and more efficient ways of working. His problem-solving skills, prompt execution, and willingness to support others make him a valuable asset to any team.
-
 Beyond his technical expertise, Arjun is supportive, collaborative, and always ready to help wherever needed. It has been a great experience working with him, and I’m confident he will continue to excel in everything he takes on.</div>
         <div class="reco-foot">
           <div class="reco-name">Saurav Dev Chowdhary</div>
