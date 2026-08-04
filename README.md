@@ -96,7 +96,10 @@ The **Steam** and **YouTube** buttons (in both the Contact section and the foote
 It's currently placeholder art (a certificate/hourglass icon per card). To swap in real badges:
 
 Save your badge images somewhere like badges/sailpoint-isp.png
-In certifications.html, find the <i class="fa-solid fa-certificate"></i> inside each .badge-img-wrap and replace with <img src="badges/sailpoint-isp.png" alt="..."> (each card has an HTML comment right above it telling you the exact filename to use)
+In certifications.html, find the 
+```<i class="fa-solid fa-certificate"></i>``` inside each .badge-img-wrap and replace with 
+```<img src="badges/sailpoint-isp.png" alt="...">```
+(each card has an HTML comment right above it telling you the exact filename to use)
 Same idea for PDFs — the href="certs/sailpoint-isp.pdf" links are already wired up, just add the actual PDF files at those paths
 
 Added a small "View badges →" link next to the "Certifications" heading in index.html pointing to the new page, plus a ./recommendations nav entry.
