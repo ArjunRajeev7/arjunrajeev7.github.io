@@ -1,5 +1,6 @@
 DONE - Add the Recommendations I received on Linked into boxes
-Fix Recommendation box sizes, add Tanweers recomendation to team from workday
+DONE - Fix Recommendation box sizes
+add Tanweers recomendation to team from workday
   
 DONE - Add below Certifications "In Progress" under the Certifications Section
   -Microsoft SC-300
@@ -10,8 +11,10 @@ DONE - Add other certifications like Cyberakr as per drive folder
 DONE - Add powershell and linux commands keywords
 make the cursors blink in green?
 intergrate youtube realtime stats on a page?
-Add a tiny logo for the website on browser tabs
 On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
-On the home page, just show the most recent 3 certifications, add a note that says the most recent 3 certifications
+DONE - On the home page, just show the most recent 3 certifications, add a note that says the most recent 3 certifications
 
+favicon
+resume download
+skip the boot animation if it already played once this browser session.
 
