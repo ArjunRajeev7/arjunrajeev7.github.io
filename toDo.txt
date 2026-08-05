@@ -1,20 +1,24 @@
+>> universal changes
+make the cursors blink in green?
+favicon
+resume download
+skip the boot animation if it already played once this browser session.
+Add Hobbies, Gaming, Finance, YouTube, Riding
+intergrate youtube realtime stats on a page?
+
+>> index.html
 DONE - Add the Recommendations I received on Linked into boxes
 DONE - Fix Recommendation box sizes
 add Tanweers recomendation to team from workday
-  
 DONE - Add below Certifications "In Progress" under the Certifications Section
   -Microsoft SC-300
   -SailPoint Identity IQ Associate
   -SailPoint Identity Security Cloud Administrator
-DONE - Add Certification PDF or Image / Badge Image, better to have this on its own separate HTML page keeping the same theme and motif so it doesnt clutter the first page I think?
-DONE - Add other certifications like Cyberakr as per drive folder
 DONE - Add powershell and linux commands keywords
-make the cursors blink in green?
-intergrate youtube realtime stats on a page?
-On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
 DONE - On the home page, just show the most recent 3 certifications, add a note that says the most recent 3 certifications
 
-favicon
-resume download
-skip the boot animation if it already played once this browser session.
+>> certifications.html
+DONE - Add Certification PDF or Image / Badge Image, better to have this on its own separate HTML page keeping the same theme and motif so it doesnt clutter the first page I think?
+DONE - Add other certifications like Cyberakr as per drive folder
+On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
 
