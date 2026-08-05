@@ -6,7 +6,7 @@
 <title>Arjun Rajeev Portfolio</title>
 <meta name="description" content="Arjun Rajeev — IAM / IGA Senior Security Analyst specializing in SailPoint IdentityIQ operations, deployments and identity governance.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"> -->
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1074,6 +1074,24 @@
     });
   }
 
+const favicons = [
+  'favicon-v1.png',
+  'favicon-v2.png',
+  'favicon-v3.png',
+  'favicon-v4.png',
+  'favicon-v5.png',
+  'favicon-v6.png',
+  'favicon-v7.png'
+];
+let faviconIndex = 0;
+const faviconLink = document.querySelector("link[rel='icon']") || (() => {
+  const l = document.createElement('link');
+  l.rel = 'icon'; document.head.appendChild(l); return l;
+})();
+setInterval(() => {
+  faviconIndex = (faviconIndex + 1) % favicons.length;
+  faviconLink.href = favicons[faviconIndex];
+}, 1200);
   
 </script>
 
