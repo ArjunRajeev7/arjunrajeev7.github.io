@@ -37,8 +37,13 @@ No build step, no dependencies to install. It's one static HTML file.
 ```
 arjun-portfolio/
 ├── index.html      ← everything: markup, <style>, <script>
+├── certifications.html ← certifications, badges.
+├── favicon.ico          ← root level
+├── favicon.png(x7)      ← root level
 ├── README.md
-└── social-preview.png
+├── Badges  ← directory
+├── Certs  ← directory
+└── social-preview.gif
 
 ```
 
@@ -105,6 +110,58 @@ Same idea for PDFs — the href="certs/sailpoint-isp.pdf" links are already wire
 Added a small "View badges →" link next to the "Certifications" heading in index.html pointing to the new page, plus a ./recommendations nav entry.
 
 To do on your end: commit certifications.html to the repo root, add the two CSS/HTML snippets above into your live index.html at the anchors described, and send me the real recommendation quotes when you're ready.
+
+## Favicon.ico
+
+Add these lines into the <head> of both index.html and certifications.html, right after your <meta name="description"> line:
+
+```html
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+```
+
+```Where to put the files in your repo:
+
+arjun-portfolio/
+├── favicon.ico          ← root level
+├── apple-touch-icon.png ← root level
+├── index.html
+├── certifications.html
+├── README.md
+└── ...
+```
+
+Both files must sit at the repo root — same level as index.html — because browsers automatically look for favicon.ico at the root of a domain, and the href paths above are relative to that. If you nest them in a subfolder the link tags will still work but the automatic browser lookup won't.
+
+## Favicon Cycle Through
+
+The only reliable way to cycle through icons in a browser is with JavaScript — you load each favicon as a separate image file and swap the ```<link rel="icon">``` tag on a timer. This works consistently across Chrome, Firefox, Edge, and Safari.
+
+Here's the exact code to add. Put it at the bottom of your ```<script>``` block in both index.html and certifications.html, just before the closing ```</script>``` tag:
+
+```javascript
+const favicons = [
+  'favicon-v1.png',
+  'favicon-v2.png',
+  'favicon-v3.png',
+  'favicon-v4.png',
+  'favicon-v5.png',
+  'favicon-v6.png',
+  'favicon-v7.png'
+];
+let faviconIndex = 0;
+const faviconLink = document.querySelector("link[rel='icon']") || (() => {
+  const l = document.createElement('link');
+  l.rel = 'icon'; document.head.appendChild(l); return l;
+})();
+setInterval(() => {
+  faviconIndex = (faviconIndex + 1) % favicons.length;
+  faviconLink.href = favicons[faviconIndex];
+}, 800);
+```
+
+Rename your 7 files to match exactly: favicon-v1.png through favicon-v7.png, all at the repo root. Change the 800 (milliseconds) to taste — 600 is snappier, 1200 is more relaxed.
 
 ## License
 
