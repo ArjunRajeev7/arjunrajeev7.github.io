@@ -1,6 +1,6 @@
 >> universal changes
 make the cursors blink in green?
-favicon
+DONE - favicon
 resume download
 skip the boot animation if it already played once this browser session.
 Add Hobbies, Gaming, Finance, YouTube, Riding
@@ -20,5 +20,5 @@ DONE - On the home page, just show the most recent 3 certifications, add a note 
 >> certifications.html
 DONE - Add Certification PDF or Image / Badge Image, better to have this on its own separate HTML page keeping the same theme and motif so it doesnt clutter the first page I think?
 DONE - Add other certifications like Cyberakr as per drive folder
-On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
+DONE - On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
 
