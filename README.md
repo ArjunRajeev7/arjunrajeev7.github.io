@@ -7,7 +7,7 @@
 ![Social Preview](./social-preview.gif)
  
 ---
-
+ 
 ## Overview
 
 A single-page portfolio built for an Identity & Access Management / Identity Governance security profile, styled as a black-and-white terminal — boot sequence on load, live CLI-style spinners, monospace typography throughout, and bracketed section labels (`[ ABOUT ]_`).
