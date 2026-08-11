@@ -22,4 +22,5 @@ DONE - On the home page, just show the most recent 3 certifications, add a note 
 DONE - Add Certification PDF or Image / Badge Image, better to have this on its own separate HTML page keeping the same theme and motif so it doesnt clutter the first page I think?
 DONE - Add other certifications like Cyberakr as per drive folder
 DONE - On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
+Fix certification pdf names on the page, print the certificates and correct the descriptions.
 
