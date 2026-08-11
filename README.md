@@ -36,14 +36,15 @@ No build step, no dependencies to install. It's one static HTML file.
 
 ```
 arjun-portfolio/
+├── assets
+ └── badges ← directory
+ └── certs ← directory
+ └── other
 ├── index.html      ← everything: markup, <style>, <script>
 ├── certifications.html ← certifications, badges.
 ├── favicon.ico          ← root level
 ├── favicon.png(x7)      ← root level
-├── README.md
-├── Badges  ← directory
-├── Certs  ← directory
-└── social-preview.gif
+└── README.md
 
 ```
 
