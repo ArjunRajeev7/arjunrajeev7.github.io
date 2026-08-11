@@ -6,6 +6,7 @@ skip the boot animation if it already played once this browser session.
 Add Hobbies, Gaming, Finance, YouTube, Riding
 intergrate youtube realtime stats on a page?
 Add the follow me on GitHub button and star button on the repo page like https://github.com/nisalgunawardhana/microsoft-certification-voucher-offers
+cleanup the readme file
 
 >> index.html
 DONE - Add the Recommendations I received on Linked into boxes
@@ -23,4 +24,6 @@ DONE - Add Certification PDF or Image / Badge Image, better to have this on its 
 DONE - Add other certifications like Cyberakr as per drive folder
 DONE - On the certification page footer, change the text 'back to portfolio' to 'back to ./home'
 Fix certification pdf names on the page, print the certificates and correct the descriptions.
+
+
 
