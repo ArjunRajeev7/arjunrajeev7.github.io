@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Finance Tracker — Mutual Funds</title>
+<meta name="theme-color" content="#000000" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="topbar" class="topbar"></div>
+  <div class="container">
+    <div class="card-grid" id="summaryCards"></div>
+
+    <div class="frame">
+      <div class="frame-head"><span class="title">allocation across funds</span></div>
+      <div class="frame-body" style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
+        <div id="allocHolder"></div>
+        <div id="allocLegend" style="flex:1; min-width:200px;"></div>
+      </div>
+    </div>
+
+    <div class="frame" id="addFrame">
+      <div class="frame-head"><span class="title">add mutual fund</span></div>
+      <div class="frame-body">
+        <div class="inline-form">
+          <div class="form-field"><label>AMFI scheme code</label><input id="newCode" placeholder="e.g. 120503" /></div>
+          <div class="form-field"><label>scheme name</label><input id="newMfName" placeholder="e.g. Axis Bluechip Fund - Direct Growth" /></div>
+          <div class="form-field"><label>category (optional)</label>
+            <select id="newCategory">
+              <option value="">—</option>
+              <option>Large Cap</option><option>Mid Cap</option><option>Small Cap</option>
+              <option>Flexi/Multi Cap</option><option>Index/ETF</option><option>Debt</option>
+              <option>Hybrid</option><option>ELSS</option><option>International</option>
+            </select>
+          </div>
+          <div class="form-field"><label>folio # (optional)</label><input id="newFolio" placeholder="folio no." /></div>
+          <div class="form-field" style="flex:0;"><button id="addMfBtn">+ add</button></div>
+        </div>
+        <p style="color:var(--text-faint); font-size:11px; margin:8px 0 0;">Find the scheme code on the AMFI website or your CAS statement — the live NAV lookup matches on this code exactly.</p>
+      </div>
+    </div>
+
+    <div class="frame" id="tableFrame"></div>
+
+    <div class="frame">
+      <div class="frame-head"><span class="title">category breakdown</span></div>
+      <div class="frame-body" id="categoryHolder"></div>
+    </div>
+
+    <div class="footer-note">finance tracker · data source: data/data.json · not investment advice</div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/finance.js"></script>
+  <script src="js/market.js"></script>
+  <script src="js/valuation.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/mutualfunds.js"></script>
+</body>
+</html>
