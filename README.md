@@ -1,172 +1,169 @@
-# Finance Tracker
+# arjun-rajeev
 
-A local-first personal investment tracker with a light/dark theme system built for a data-dense fintech feel — not a generic dashboard template. Six pages: Indian Stocks (NSE), Mutual Funds, US Stocks (incl. ETFs), Fixed Deposits, EPF, plus a dashboard for the full picture, and a Dividends page for tracking payouts over time. Live prices for NSE stocks, mutual fund NAVs, and US stocks/ETFs.
+> IAM / IGA Senior Security Analyst — SailPoint IdentityIQ. Single-file, terminal-themed personal portfolio.
 
-See **[CHANGELOG.md](CHANGELOG.md)** for a full history of what's changed, added, or fixed over time.
+**Live site:** `https://arjunrajeev7.github.io/`  <a href="https://arjunrajeev7.github.io/">Link</a>
 
-**Design**: Inter for UI text, IBM Plex Mono (tabular numerals) for money figures and ticker symbols. Every live-fetched price shows a small freshness pulse — green (refreshed <15 min ago), amber (stale, refresh recommended), or gray (manually entered) — so you can see at a glance which numbers are current. Light/dark toggle in the header, remembers your choice, defaults to your OS setting on first visit.
+![Social Preview](./assets/other/social-preview.gif)
 
-## What's new in this revision
+---
+ 
+## Overview
 
-- **Account owner tags on stock lots**: a tiny 1–2 letter circle (same size as the "i" info button) before each transaction's Date, in both the purchase-lot tooltip and the full Txns modal. Set any 1–2 letters you like (e.g. AR, AS, RN) per transaction, editable inline or via CSV import — useful when the same stock is split across multiple family accounts (e.g. TATACAP held by you, your wife, and your father).
-- **BONUS share entries**: new transaction type alongside BUY/SELL for free bonus allotments. Enter the quantity received, leave price at 0 — this correctly dilutes your average cost per share without touching your actual invested amount, exactly like a real bonus issue. (Fixed a real bug along the way: price=0 was being silently rejected as "missing" by the form validation.)
-- **BSE fallback for Indian stock prices**: some symbols (e.g. NSDL, POLYMED) are BSE-only and weren't being found. Price lookups now try NSE first, then BSE, before falling back to NSE's official API.
-- **Dividend import matches Zerodha Console's export exactly**: column order and headers (Symbol, Ex-date, Qty, Dividend per share, Total dividend) mirror Zerodha's dividend report CSV, so you can download it there and import here with zero editing. Qty and Dividend/Share are optional and shown for reference; only Total Dividend is required for the actual totals.
-- **Tooltip cleanup**: removed the redundant Cost column (Qty×Price was already visible as separate columns), and fixed the popover clipping text — it now sizes itself to fit content.
+A single-page portfolio built for an Identity & Access Management / Identity Governance security profile, styled as a black-and-white terminal — boot sequence on load, live CLI-style spinners, monospace typography throughout, and bracketed section labels (`[ ABOUT ]_`).
 
-- **CSV/Excel import** on Stocks [Indian/US] and Mutual Funds pages: upload a .csv or .xlsx of transactions, matched to existing holdings by symbol/scheme code (creates new holdings automatically for unmatched symbols). Click the **i** next to the modal title for the exact column list, or **Download template** for a ready-made starting file.
-- **Dividends page** (new): log dividends manually or via CSV/Excel import, for both Indian and US stocks. Shows total received, this-year total, per-market totals, a sortable full history, and a yearly breakdown table. USD dividends are converted to INR using the *current* FX rate (not the historical rate on the payment date — noted on the page).
-- **Purchase-lot tooltip cleanup**: removed the redundant Cost column (it was just Qty×Price, already visible), keeping Date/Qty/Price/Fees. The popover now sizes itself to fit its content instead of clipping text.
-- Fixed a z-index bug where the "i" tooltip could render behind an open modal.
+No build step, no dependencies to install. It's one static HTML file.
 
-- **Activity log** (Settings): every add/edit/delete and price-refresh result is recorded, with errors flagged distinctly. Kept in `data.json` itself (`activityLog` array, capped at the latest 25), so it travels with your data file.
-- **Editable transactions**: stock, mutual fund, and FD entries can now be corrected via an **Edit** button, not just deleted and re-added.
-- **Purchase-lot tooltip** (the small "i" next to Qty): shows every buy lot's exact date/quantity/price/cost/fees with full decimal precision — no rounding — plus a running fee total. Avg Cost in the main table is now the pure per-share price (fees excluded); fees are itemized separately in the tooltip.
-- **Dual-currency display** on the US Stocks page: INR as the primary figure, USD as a smaller line underneath, both in the summary cards and the table.
-- **Sortable table headers** (Stocks, Mutual Funds) — click to sort, click again to reverse, including the Tags column.
-- **Tags** (Indian Stocks): mark holdings as IPO allotments or anything custom via a free-text tag.
-- **Hoverable allocation charts**: hovering a donut segment pops it slightly and shows a tooltip with the exact label/value.
-- **Desktop sidebar collapse**: the hamburger icon now toggles an icon-only collapsed sidebar on desktop (not just the mobile overlay).
-- Settings (API key, CORS proxy, FX override) are saved into `data.json` and round-trip through export/import.
+## Features
 
+- **Boot sequence intro** — a typed terminal log (`mounting sailpoint iiq modules... [ok]`) plays once per page load, skippable by clicking anywhere, and automatically disabled for users with reduced-motion preferences enabled.
+- **Live status console** — hero panel with CLI-style braille spinners simulating platform monitoring.
+- **Fully responsive** — mobile nav collapses into a terminal-style dropdown.
+- **Scroll reveal animations** via `IntersectionObserver`.
+- **Sections:** About & Focus, Experience (timeline), Key Initiatives, Skills, Education & Achievements, Contact.
 
-## Pages
+## Tech stack
 
-- **`index.html`** — Dashboard: totals, gain/loss, XIRR, diversification metrics, allocation donut, top holdings by weight, full holdings table, invested-vs-current chart.
-- **`stocks-ind.html`** — Indian Stocks: NSE holdings, qty, avg cost, LTP, current value, P&L, % change, weight, XIRR.
-- **`stocks-us.html`** — US Stocks: same breakdown for US stocks/ETFs, in USD with live INR conversion.
-- **`mutual-funds.html`** — individual fund holdings, units, NAV, P&L, XIRR, category breakdown.
-- **`fixed-deposits.html`** — principal, rate, interest accrued so far, value at maturity, maturity timeline.
-- **`epf.html`** — accounts, EPS-aware contribution split, auto-accruing monthly contributions, and a forward balance projection graph.
-
-## How your data persists — read this first
-
-This is a static site with no backend, so there's no real database. The
-mechanism here is honest but manual:
-
-- **`data/data.json`** is the single source of truth, shipped with the site.
-  You can **hand-edit this file directly** (it's plain JSON — see the schema
-  below) or use the forms on each page.
-- On first visit in a browser, the site fetches `data/data.json` and caches
-  a working copy in that browser's `localStorage`, so your edits survive
-  page refreshes without needing to re-save constantly.
-- To make edits visible on **another device or browser**, click **⇩ save to
-  file** in the top bar (or Settings). This downloads an updated
-  `data.json` — replace `data/data.json` in your repo with it and commit.
-  Anyone loading the page after that sees the update.
-- **⇧ reload from file** (in Settings) discards local edits in the current
-  browser and re-reads `data/data.json` — use this after committing an
-  update from elsewhere.
-
-This is **not live multi-device sync** — there's a manual "commit the file"
-step — but it's the real mechanism a backend-less GitHub Pages site can
-offer, and it means the file itself (not a per-browser cache) is what
-"follows you."
-
-### Editing `data/data.json` by hand
-
-Top-level shape:
-
-```json
-{
-  "holdings": {
-    "IN_STOCK": [ { "id": "...", "symbol": "RELIANCE", "name": "Reliance Industries", "exchange": "NSE",
-                    "txns": [ { "id": "...", "date": "2024-01-10", "type": "BUY", "qty": 10, "price": 2400, "fees": 20 } ] } ],
-    "IN_MF":    [ { "id": "...", "schemeCode": "120503", "name": "Axis Bluechip Fund - Direct Growth", "category": "Large Cap", "folio": "12345",
-                    "txns": [ { "id": "...", "date": "2023-06-01", "type": "BUY", "qty": 500, "price": 40, "fees": 0 } ] } ],
-    "US_STOCK": [ { "id": "...", "symbol": "AAPL", "name": "Apple Inc", "exchange": "US",
-                    "txns": [ { "id": "...", "date": "2023-03-01", "type": "BUY", "qty": 5, "price": 150, "fees": 1 } ] } ],
-    "FD":       [ { "id": "...", "bank": "HDFC Bank", "principal": 200000, "rate": 7.1, "startDate": "2024-01-01", "tenureMonths": 24, "compounding": "quarterly" } ],
-    "EPF":      [ { "id": "...", "employerName": "Acme Corp", "uan": "1234567890", "openingBalance": 150000, "openingDate": "2022-04-01",
-                    "recurring": { "active": true, "mode": "salary", "basicSalary": 50000, "startDate": "2022-04-01",
-                                    "employeeAmt": 6000, "employerEpfAmt": 4751, "employerEpsAmt": 1250 },
-                    "interestRates": [ { "fyLabel": "2023-24", "ratePct": 8.15 }, { "fyLabel": "2024-25", "ratePct": 8.25 } ],
-                    "txns": [] } ]
-  },
-  "settings": { "baseCurrency": "INR", "apiKeys": { "alphaVantage": "" }, "corsProxy": "https://corsproxy.io/?url=", "fxOverride": null }
-}
-```
-
-IDs can be any unique string when hand-editing (e.g. `"s1"`, `"mf-axis"`).
-Dates are always `YYYY-MM-DD`. Money is INR for `IN_STOCK`/`IN_MF`/`FD`/`EPF`;
-`US_STOCK` transaction prices are USD.
-
-## Deploying to GitHub Pages
-
-1. Upload the whole folder to your repo, keeping `js/`, `css/`, `icons/`, `data/` as siblings of `index.html`.
-2. Repo Settings → Pages → set source to the branch/folder you pushed.
-3. Visit the published URL. Any device that loads it reads the same `data/data.json`.
-4. Optional: "Add to Home Screen" (Android Chrome / iOS Safari) installs it like an app.
-
-## Live price setup
-
-Open **Settings** (top bar) on any page:
-
-| Source | Setup | Notes |
-|---|---|---|
-| Indian Stocks (NSE) | none — routed through a CORS proxy | NSE has no public CORS-enabled API; the app tries a direct request, then the proxy URL in Settings. Swap the proxy or set a manual price per row if it stops working. |
-| Mutual Funds | none | Uses AMFI's free daily NAV file, matched by scheme code. |
-| US Stocks | Alpha Vantage API key (free) | Get one at alphavantage.co/support/#api-key. Free tier is rate-limited (25 requests/day) — refresh sparingly with many US holdings. |
-| USD → INR | none | frankfurter.app (ECB rates) with a fallback; pin a manual rate in Settings if you prefer. |
-
-**↻ refresh prices** (top bar) pulls fresh NSE/MF/US prices + FX. Cached 15
-minutes locally to avoid hammering free APIs. If a symbol won't resolve, use
-the **price** button on that row for a manual value — used until the next
-successful live fetch.
-
-## EPF specifics
-
-- **EPS split**: entering a monthly basic+DA auto-computes the standard
-  EPFO split — employee 12% of basic to EPF; employer 12% of basic split
-  into 8.33% (capped at ₹1,250, based on the ₹15,000 EPS wage ceiling) to
-  the **EPS pension pool**, remainder to the **EPF account**. EPS is shown
-  separately since it funds a monthly pension rather than earning account
-  interest like the EPF corpus.
-- **Auto-accrual**: once you save a monthly contribution (manual amounts or
-  salary-based), it's applied every month from its start date up to today
-  automatically — no need to log each month by hand. Interest compounds
-  using EPFO's actual method: monthly interest on the running balance,
-  summed and credited at each financial year-end (March).
-- **Projection graph**: continues the current contribution rate (with an
-  optional annual step-up for raises) forward at an assumed interest rate,
-  and charts the balance growth.
-- One-off manual transactions are still available for lump sums (e.g. a PF
-  transfer-in from a previous employer) via hand-editing `data.json`'s
-  `txns` array on that holding.
-
-## How the numbers are calculated
-
-- **Stocks / mutual funds**: every logged BUY/SELL builds a cash-flow
-  series; XIRR is solved on that plus current value. Average cost and
-  invested amount are net of sells.
-- **Fixed Deposits**: compound interest (`principal × (1 + rate/n)^(n×years)`,
-  `n` = compounding frequency) up to the earlier of today or maturity, then
-  flat at the maturity value.
-- **Portfolio XIRR** (dashboard): pools every cash flow across every
-  holding and asset class into one series and solves once.
-- **Diversification metrics** (dashboard): largest single holding as % of
-  portfolio, and an asset-class concentration score (sum of squared
-  class weights ×100 — lower means more evenly spread).
+| Layer | Choice |
+|---|---|
+| Markup | Semantic HTML5 |
+| Styling | Vanilla CSS (Flexbox + Grid, CSS variables) |
+| Fonts | [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (display), [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) (body) via Google Fonts CDN |
+| Icons | [Font Awesome 6](https://fontawesome.com/) via CDN |
+| JavaScript | Vanilla JS — no frameworks, no build tools |
 
 ## File structure
 
 ```
-index.html, stocks-ind.html, stocks-us.html,
-mutual-funds.html, fixed-deposits.html, epf.html    the six pages
-data/data.json                                       source of truth (hand-editable)
-css/theme.css                                         design system — light/dark tokens, sidebar, cards, tables
-js/icons.js                                           inline SVG line-icon set
-js/theme.js                                           theme state + toggle widget
-js/store.js                                          file-based data model + localStorage cache
-js/finance.js                                         XIRR / FD / EPF (+EPS, projection) math
-js/market.js                                          live price fetching + caching
-js/valuation.js                                        combines store + prices into current values
-js/charts.js                                          SVG donut/bar/line charts, theme-aware palette
-js/app.js                                             shared sidebar/header, save/reload-from-file, settings
-js/dashboard.js, js/stocklike.js, js/mutualfunds.js,
-js/fixeddeposits.js, js/epf.js                        per-page logic
-manifest.json, sw.js                                  PWA support
-robots.txt                                            blocks search-engine indexing
+arjun-portfolio/
+├── assets
+ └── badges ← directory
+ └── certs ← directory
+ └── other
+├── index.html      ← everything: markup, <style>, <script>
+├── certifications.html ← certifications, badges.
+├── favicon.ico          ← root level
+├── favicon.png(x7)      ← root level
+└── README.md
+
 ```
 
-Not investment advice — this is a personal tracking tool.
+`index.html` must stay at the **repo root** — GitHub Pages resolves the root `index.html` as the site's home page.
+
+## Run locally
+
+No build step required. Either:
+
+```bash
+# just open it
+open index.html          # macOS
+start index.html         # Windows
+xdg-open index.html      # Linux
+```
+
+or serve it properly (recommended, avoids any local-file quirks):
+
+```bash
+python3 -m http.server 8000
+# then visit http://localhost:8000
+```
+
+## Deploy with GitHub Pages
+
+1. Push this repo to GitHub (public repo).
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to `Deploy from a branch`.
+4. Branch: `main`, folder: `/ (root)` → **Save**.
+5. GitHub publishes the site at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
+
+## Customization
+
+| What | Where |
+|---|---|
+| Name, role, bio | `<section class="hero">` |
+| Work experience | `<section id="experience">` timeline items |
+| Key initiatives | `<section id="initiatives">` cards |
+| Skills | `<section id="skills">` pill groups |
+| Certifications / education | `<section id="education">` |
+| Contact links | `<section id="contact">` and `<footer>` |
+| Colors / fonts | CSS variables at the top of `<style>` (`--bg`, `--white`, `--disp`, `--body`, etc.) |
+
+### ⚠ Pending links
+
+The **Steam** and **YouTube** buttons (in both the Contact section and the footer) currently point to `href="#"` as placeholders. Replace both occurrences of each with real URLs, e.g.:
+
+```html
+<a href="https://steamcommunity.com/id/YOUR_ID" ...>
+<a href="https://youtube.com/@YOUR_HANDLE" ...>
+```
+
+## Certifications.html
+
+It's currently placeholder art (a certificate/hourglass icon per card). To swap in real badges:
+
+Save your badge images somewhere like badges/sailpoint-isp.png
+In certifications.html, find the 
+```<i class="fa-solid fa-certificate"></i>``` inside each .badge-img-wrap and replace with 
+```<img src="badges/sailpoint-isp.png" alt="...">```
+(each card has an HTML comment right above it telling you the exact filename to use)
+Same idea for PDFs — the href="certs/sailpoint-isp.pdf" links are already wired up, just add the actual PDF files at those paths
+
+Added a small "View badges →" link next to the "Certifications" heading in index.html pointing to the new page, plus a ./recommendations nav entry.
+
+To do on your end: commit certifications.html to the repo root, add the two CSS/HTML snippets above into your live index.html at the anchors described, and send me the real recommendation quotes when you're ready.
+
+## Favicon.ico
+
+Add these lines into the <head> of both index.html and certifications.html, right after your <meta name="description"> line:
+
+```html
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+```
+
+```Where to put the files in your repo:
+
+arjun-portfolio/
+├── favicon.ico          ← root level
+├── apple-touch-icon.png ← root level
+├── index.html
+├── certifications.html
+├── README.md
+└── ...
+```
+
+Both files must sit at the repo root — same level as index.html — because browsers automatically look for favicon.ico at the root of a domain, and the href paths above are relative to that. If you nest them in a subfolder the link tags will still work but the automatic browser lookup won't.
+
+## Favicon Cycle Through
+
+The only reliable way to cycle through icons in a browser is with JavaScript — you load each favicon as a separate image file and swap the ```<link rel="icon">``` tag on a timer. This works consistently across Chrome, Firefox, Edge, and Safari.
+
+Here's the exact code to add. Put it at the bottom of your ```<script>``` block in both index.html and certifications.html, just before the closing ```</script>``` tag:
+
+```javascript
+const favicons = [
+  'favicon-v1.png',
+  'favicon-v2.png',
+  'favicon-v3.png',
+  'favicon-v4.png',
+  'favicon-v5.png',
+  'favicon-v6.png',
+  'favicon-v7.png'
+];
+let faviconIndex = 0;
+const faviconLink = document.querySelector("link[rel='icon']") || (() => {
+  const l = document.createElement('link');
+  l.rel = 'icon'; document.head.appendChild(l); return l;
+})();
+setInterval(() => {
+  faviconIndex = (faviconIndex + 1) % favicons.length;
+  faviconLink.href = favicons[faviconIndex];
+}, 800);
+```
+
+Rename your 7 files to match exactly: favicon-v1.png through favicon-v7.png, all at the repo root. Change the 800 (milliseconds) to taste — 600 is snappier, 1200 is more relaxed.
+
+## License
+
+Personal portfolio — feel free to fork the structure for your own use, but please swap out the content, name, and resume details before publishing.
